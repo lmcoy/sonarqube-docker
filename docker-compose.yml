@@ -1,0 +1,23 @@
+version: '3'
+services:
+  sonar:
+    build: ./sonarqube/
+    ports:
+     - "9000:9000"
+    volumes:
+     - sonarqube_data:/usr/src/sonarqube/data
+     - sonarqube_conf:/usr/src/sonarqube/conf
+     - sonarqube_plugins:/usr/src/extensions/plugins
+  postgres:
+    build: ./postgres/
+    volumes:
+     - postgresql:/var/lib/postgresql
+     - postgresql_data:/var/lib/postgresql/data
+
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_plugins:
+  postgresql:
+  postgresql_data:
